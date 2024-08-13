@@ -1,0 +1,18 @@
+﻿@inherits ComponentBase
+
+<li>
+    <button type="button" class="group flex w-full items-center rounded-lg p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example" @onclick="ToggleDropdown">
+        @m_Children[0]
+        <span class="flex-1 ms-3 whitespace-nowrap text-left rtl:text-right">@Text</span>
+        <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+        </svg>
+    </button>
+    <ul id="dropdown-example" class="@((isDropdownVisible) ? string.Empty : "hidden") space-y-2 py-2">
+        @for (int i = 1; i < m_Children.Count; i++)
+        {
+            @m_Children[i]
+        }
+    </ul>
+</li>
+

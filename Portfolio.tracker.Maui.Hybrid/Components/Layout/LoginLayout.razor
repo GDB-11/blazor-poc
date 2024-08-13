@@ -1,0 +1,19 @@
+﻿@inherits LayoutComponentBase
+
+@inject IJSRuntime JS
+
+<div class="flex min-h-screen items-center justify-center bg-gray-100">
+    <div class="w-full max-w-md rounded-lg bg-white p-8 shadow-md">
+        <div class="mb-6 flex flex-col items-center">
+            <div class="mb-2 h-16 w-16">
+                <LogoSvg Color="@DefaultColors.PrimaryAppColor" />
+            </div>
+            <h1 class="text-2xl font-bold">Portfolio Tracker</h1>
+            <br />
+            <p class="text-gray-600">@Motto</p>
+            <br />
+        </div>
+        <LanguagePicker />
+        @Body
+    </div>
+</div>

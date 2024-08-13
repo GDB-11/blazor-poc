@@ -1,0 +1,63 @@
+﻿@page "/portfolio/{PortfolioId}"
+
+<div class="mb-4">
+    <h3 class="pb-4 text-2xl font-bold">@TitleText</h3>
+    <div class="flex justify-end">
+        <ModalActivationButton TargetModalId="modal-add-portfolio-item" Text="@AddButtonText" />
+    </div>
+</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+        <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <TableHeader Text="N°" />
+                @* <TableHeader Text="@LogoTableHeaderText" /> *@
+                <TableHeader Text="@NameTableHeaderText" />
+                <TableHeader Text="@TickerTableHeaderText" />
+                <TableHeader Text="@ActionTableHeaderText" />
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < userPortfolioItems.Count; i++)
+            {
+                <tr class="border-b bg-white hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-600">
+                    <BoldRowCell Text="@((i + 1).ToString())" />
+                    @* <BasicCellWithIcon>
+                        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="40" fill="@GetRandomDarkColor()"></circle>
+                            <text x="50%" y="50%" font-family="Arial" font-size="40" fill="white" text-anchor="middle" dominant-baseline="middle">@userPortfolioItems[i - 1].Ticker.Substring(1, 1)</text>
+                        </svg>
+                    </BasicCellWithIcon> *@
+                    <BasicCell Text="@(userPortfolioItems[i].Name)" />
+                    <BasicCell Text="@(userPortfolioItems[i].Ticker)" />
+                    <td class="px-6 py-4 text-left">
+                        <button @onclick="ViewPortfolioItem">
+                            <ReadSvg />
+                        </button>
+                        <button @onclick="AddPortfolioItemTransaction">
+                            <AddSvg />
+                        </button>
+                        <button @onclick="DeletePortfolioItem">
+                            <DeleteSvg />
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<ModalWithTitle ModalId="modal-add-portfolio-item" TitleText="@AddPortfolioItemModalTitleText">
+    <form class="p-4 md:p-5" method="post" @onsubmit="OnAddSubmit">
+        <div class="grid-cols-2 mb-4 grid gap-4">
+            <div class="col-span-2">
+                <BasicLabeledInput Id="portfolio-item-add-name" Type="text" Label="@PortfolioItemNameModalFormText" @bind-Value="@portfolioItemModel.Name" PlaceholderText="@PortfolioItemNameModalFormPlaceholderText" IsRequired="true" />
+            </div>
+            <div class="col-span-2">
+                <BasicLabeledInput Id="portfolio-item-add-ticker" Type="text" Label="@PortfolioItemTickerModalFormText" @bind-Value="@portfolioItemModel.Ticker" PlaceholderText="@PortfolioItemTickerModalFormPlaceholderText" IsRequired="true" />
+            </div>
+        </div>
+        <AddButtonWithText Id="add-button-modal" Type="submit" Text="@AddPortfolioItemModalButtonText" />
+    </form>
+</ModalWithTitle>

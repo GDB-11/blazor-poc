@@ -1,0 +1,15 @@
+﻿@inherits LayoutComponentBase
+
+<div class="flex min-h-screen flex-col">
+    <NavMenu />
+
+    <!-- Main content -->
+    <div class="flex-1 flex pt-16">
+        <div class="sm:w-64">
+            <Sidebar />
+        </div>
+        <main class="flex-1 p-4">
+            @Body
+        </main>
+    </div>
+</div>

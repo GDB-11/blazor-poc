@@ -1,0 +1,8 @@
+﻿@inherits ComponentBase
+
+<li>
+    <button class="group flex w-full items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" @onclick="NavigateTo">
+        @ChildContent
+        <span class="ms-3">@Text</span>
+    </button>
+</li>

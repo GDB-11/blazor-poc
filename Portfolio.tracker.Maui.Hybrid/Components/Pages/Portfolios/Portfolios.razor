@@ -1,0 +1,62 @@
+﻿@page "/portfolios"
+
+<div class="mb-4">
+    <h3 class="pb-4 text-2xl font-bold">@TitleText</h3>
+    <div class="flex justify-end">
+        <ModalActivationButton TargetModalId="modal-add-portfolio" Text="@AddButtonText" />
+    </div>
+</div>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+        <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <TableHeader Text="N°" />
+                <TableHeader Text="@NameTableHeaderText" />
+                <TableHeader Text="@ActionTableHeaderText" />
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < userPortfolios.Count; i++)
+            {
+                <tr class="border-b bg-white hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-600">
+                    <BoldRowCell Text="@((i + 1).ToString())" />
+                    <BasicCell Text="@(userPortfolios[i].Name)" />
+                    <td class="px-6 py-4 text-left">
+                        <button @onclick="EnterPortfolio">
+                            <ReadSvg />
+                        </button>
+                        <ModalActivationButtonWithIcon TargetModalId="modal-edit-portfolio" OnClick="GetTableRowIdFromButton">
+                            <EditSvg />
+                        </ModalActivationButtonWithIcon>
+                        <button @onclick="DeletePortfolio">
+                            <DeleteSvg />
+                        </button>                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<ModalWithTitle ModalId="modal-add-portfolio" TitleText="@AddPortfolioModalTitleText">
+    <form class="p-4 md:p-5" method="post" @onsubmit="OnAddSubmit">
+        <div class="grid-cols-2 mb-4 grid gap-4">
+            <div class="col-span-2">
+                <BasicLabeledInput Id="portfolio-add-name" Type="text" Label="@PortfolioNameModalFormText" @bind-Value="@portfolioModel.Name" PlaceholderText="@PortfolioNameModalFormPlaceholderText" IsRequired="true" />
+            </div>
+        </div>
+        <AddButtonWithText Id="add-button-modal" Type="submit" Text="@AddPortfolioModalButtonText" />
+    </form>
+</ModalWithTitle>
+
+<ModalWithTitle ModalId="modal-edit-portfolio" TitleText="@EditPortfolioModalTitleText">
+    <form class="p-4 md:p-5" method="post" @onsubmit="OnEditSubmit">
+        <div class="grid-cols-2 mb-4 grid gap-4">
+            <div class="col-span-2">
+                <BasicLabeledInput Id="portfolio-edit-name" Type="text" Label="@PortfolioNameModalFormText" @bind-Value="@portfolioEditModel.Name" PlaceholderText="@PortfolioNameModalFormPlaceholderText" IsRequired="true" />
+            </div>
+        </div>
+        <EditButtonWithText Id="add-button-modal" Type="submit" Text="@EditPortfolioModalButtonText" />
+    </form>
+</ModalWithTitle>

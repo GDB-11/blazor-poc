@@ -1,0 +1,10 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=C:\\Users\\Gianfranco\\source\\repos\\portfolio-tracker\\src\\Portfolio.Tracker\\Portfolio.tracker.Maui.Hybrid\\bin\\Debug\\net8.0-windows10.0.19041.0\\win10-x64\\appdb.db;Mode=ReadWriteCreate;"
+    //"DefaultConnection": "Data Source=./appdb.db;Version=3;"
+  },
+  "AppSettings": {
+    "Setting1": "Value1",
+    "Setting2": "Value2"
+  }
+}

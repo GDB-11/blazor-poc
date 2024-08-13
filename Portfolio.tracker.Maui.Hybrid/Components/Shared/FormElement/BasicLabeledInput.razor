@@ -1,0 +1,2 @@
+﻿<label for="@Id" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">@Label</label>
+<input id="@Id" type="@Type" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="@PlaceholderText" @attributes="@(IsRequired ? new Dictionary<string, object> { { "required", "required" } } : null)" value="@Value" />

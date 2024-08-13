@@ -1,0 +1,35 @@
+﻿@inject IJSRuntime JS
+
+<aside id="logo-sidebar" class="z-40 -translate-x-full fixed left-0 top-0 h-screen w-64 border-r border-gray-200 bg-white pt-20 transition-transform dark:bg-gray-800 dark:border-gray-700 sm:translate-x-0 md:sticky" aria-label="Sidebar">
+    <div class="h-full overflow-y-auto bg-white px-3 pb-4 dark:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+            <SidebarBasicButtonWithIcon Text="@DashboardText">
+                <DashboardSvg />
+            </SidebarBasicButtonWithIcon>
+            <SidebarBasicButtonWithIcon Text="@PortfoliosText" Route="portfolios">
+                <PortfolioSvg />
+            </SidebarBasicButtonWithIcon>
+            <SidebarBasicButtonWithIcon Text="@AssetText">
+                <AssetSvg />
+            </SidebarBasicButtonWithIcon>
+            @* <SidebarExpandableButton Text="E-commerce">
+                <ChildFragment><CartSvg /></ChildFragment>
+                <ChildFragment><SidebarBasicButton Text="Products" /></ChildFragment>
+                <ChildFragment><SidebarBasicButton Text="Billing" /></ChildFragment>
+                <ChildFragment><SidebarBasicButton Text="Invoice" /></ChildFragment>
+            </SidebarExpandableButton>
+            <SidebarBasicButtonWithBadge Text="New Features" BadgeText="Pro">
+                <DashboardSvg />
+            </SidebarBasicButtonWithBadge>
+            <SidebarBasicButtonWithCounterBadge Text="New Features" BadgeNumber="5">
+                <InboxSvg />
+            </SidebarBasicButtonWithCounterBadge>
+            <SidebarBasicButtonWithIcon Text="Users">
+                <UsersSvg />
+            </SidebarBasicButtonWithIcon> *@
+            <SidebarBasicButtonWithIcon Text="@LogOutText" Route="login">
+                <LogOutSvg />
+            </SidebarBasicButtonWithIcon>
+        </ul>
+    </div>
+</aside>

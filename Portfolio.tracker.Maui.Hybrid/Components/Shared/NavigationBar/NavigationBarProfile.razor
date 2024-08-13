@@ -1,0 +1,16 @@
+﻿<div class="z-50 my-4 hidden list-none divide-y divide-gray-100 rounded bg-white text-base shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+    <div class="px-4 py-3" role="none">
+        <p class="text-sm text-gray-900 dark:text-white" role="none">
+            @UserData.Username
+        </p>
+        <p class="truncate text-sm font-medium text-gray-900 dark:text-gray-300" role="none">
+            @UserData.Email
+        </p>
+    </div>
+    <ul class="space-y-2" role="none">
+        <NavigationBarProfileOption Text="Dashboard" Route="Dashboard" />
+        <NavigationBarProfileOption Text="Settings" Route="Settings" />
+        <NavigationBarProfileOption Text="Earnings" Route="Earnings" />
+        <NavigationBarProfileOption Text="Sign out" Route="SignOut" />
+    </ul>
+</div>

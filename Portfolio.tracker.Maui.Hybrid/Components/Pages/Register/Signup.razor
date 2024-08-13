@@ -1,0 +1,35 @@
+﻿@page "/signup"
+
+@layout LoginLayout
+
+@inject SweetAlertService Swal
+
+<div class="space-y-2 p-6 sm:p-8 md:space-y-4">
+    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
+        @Title
+    </h1>
+    <EditForm class="space-y-4 md:space-y-6" Model="@userData" OnValidSubmit=@OnSubmit>
+        <div>
+            <LabeledInputWithAddon Id="username" Label="@UsernameLabel" Type="text" PlaceholderText="@UsernamePlaceholder" IsRequired="true" @bind-Value="@userData.Username">
+                <GreyUserIconSvg />
+            </LabeledInputWithAddon>
+        </div>
+        <div>
+            <LabeledInputWithAddon Id="user-password" Label="@PasswordLabel" Type="password" IsRequired="true" PlaceholderText="••••••••" @bind-Value="@userData.Password">
+                <PasswordSvg />
+            </LabeledInputWithAddon>
+        </div>
+        <div>
+            <LabeledInputWithAddon Id="email" Label="@EmailLabel" Type="email" PlaceholderText="@EmailPlaceholder" IsRequired="true" @bind-Value="@userData.Email">
+                <EmailSvg />
+            </LabeledInputWithAddon>
+        </div>
+        <div class="flex items-start">
+            <LabeledCheckbox Id="user-terms" Label="@TermsAndConditionsLabel" IsRequired="true" @bind-Value="@userData.AcceptTC" />
+        </div>
+        <button type="submit" class="bg-primary-600 w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-300 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:bg-blue-600 dark:hover:bg-blue-800 dark:focus:ring-blue-900">@CreateAccountButtonText</button>
+        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+            @AlreadyHaveAnAccountText <a href="/login" class="text-primary-600 font-medium hover:underline dark:text-primary-500">@LoginHereText</a>
+        </p>
+    </EditForm>
+</div>
